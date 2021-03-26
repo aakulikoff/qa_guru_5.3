@@ -1,7 +1,6 @@
 package lesson_3_selenide;
 
 import com.codeborne.selenide.*;
-import com.codeborne.selenide.conditions.Text;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -15,8 +14,7 @@ public class SelenideGitTests {
 
         open("https://github.com/");
         $(byName("q")).setValue("Selenide").pressEnter();
-        $((".f4.text-normal"), 0).shouldHave(text("selenide/selenide"));
-        getFocusedElement().click();
+        $(".repo-list").shouldHave(text("selenide/selenide"));
         $(byLinkText("selenide/selenide")).click();
         $(byText("Wiki")).click();
         $(byText("Soft assertions")).shouldBe(Condition.visible).click();
